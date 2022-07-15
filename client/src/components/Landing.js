@@ -8,13 +8,18 @@ function Landing({ onLogin }) {
             <div id="landing">
                 <img src="https://www.pngkey.com/png/full/73-739447_the-problem-with-bill-splitting-websites-share-expenses.png" alt="Split bill" />
                 <h1>
-                Splitz
+                $plitz
                 </h1>
-                {/* <Space direction="vertical"> */}
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
                     <Login onLogin={onLogin} />
                     <Registration onLogin={onLogin} />
-                {/* </Space> */}
-                
             </div>
         </>
     )

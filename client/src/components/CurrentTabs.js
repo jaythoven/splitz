@@ -5,6 +5,7 @@ import TabCard from "./TabCard";
 function CurrentTabs({ user }) {
     const { Panel } = Collapse;
     const [tabs, setTabs] = useState([])
+    const [isDelete, setDelete] = useState(false)
 
     useEffect(()=>{
         fetch('/api/tabs').then(r=>r.json()).then(data=>{
@@ -17,16 +18,17 @@ function CurrentTabs({ user }) {
 
     const handleDeleteTab = (id) => {
         fetch(`/api/tabs/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            method: "DELETE",
+            // headers: {
+            //     'Content-Type': 'application/json'
+            // },
         })
-        .then(r=>r.json())
+        // .then(r=>r.json())
         .then(setTabs(tabs.filter(tab => tab.id !== id)))
     };
+
     const success = () => {
-        message.success('Settle successful, check it out in Completed Tabs');
+        message.success('Successful!');
       };
 
     function handleSettle(id) {

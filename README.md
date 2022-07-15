@@ -1,3 +1,11 @@
+Welcome to the Splitz app. This application will help splitting bills amongst groups of friends or close associates/acquaintances and ease the hassle in, you guessed it, splitting a bill. Please note that for this app to work, a user and the individuals who are going to split a bill must be registered.
+
+Technologies used in this application:
+- Ruby on Rails (incl. ActiveRecord)
+- React (incl. React Router DOM)
+
+Please feel free to use this as a model for future projects or to implement onto this project as well.
+
 # Project Template: React/Rails API
 
 ## Description

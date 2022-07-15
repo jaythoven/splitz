@@ -9,16 +9,16 @@ function CompletedTabCard({ tab, user }) {
         })
         let exp = useritems.reduce(function (acc, item) { return acc+item.price},0).toFixed(2)
         expenses.push({
-            name: user.full_name,
+            name: user.username,
             expense: exp
         })
     });
     let myExp = expenses.find(u=>{
-        return (u.name===user.full_name)
+        return (u.name===user.username)
     }).expense
 
     let otherExp = expenses.filter(e=>{
-        return e.name!==user.full_name
+        return e.name!==user.username
     })
 
     function payment() {

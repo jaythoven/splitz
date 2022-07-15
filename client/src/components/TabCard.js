@@ -88,9 +88,9 @@ function TabCard({ tab, user, handleDeleteTab, handleSettle }) {
     const { confirm } = Modal
     function showConfirm() {
         confirm({
-            title: "Are you sure settle this tab?",
+            title: "Ready to settle?",
             icon: <ExclamationCircleOutlined />,
-            content: "Once you settle, no one will be able to add items and you can see bill splitting result in completed tabs section.",
+            content: "Items can no longer be added and you can see the split bill under \"Complete\"",
             okText: "Yes",
             okType: "primary",
             onOk(){
@@ -101,7 +101,7 @@ function TabCard({ tab, user, handleDeleteTab, handleSettle }) {
     const participants = (
         <Space direction="vertical">
             {tab.users.map((user)=>{
-                return (<Space key={user.id}><Avatar icon={<UserOutlined />} />{user.full_name}</Space>)
+                return (<Space key={user.id}><Avatar icon={<UserOutlined />} />{user.username}</Space>)
             })}
         </Space>
     )
@@ -114,7 +114,7 @@ function TabCard({ tab, user, handleDeleteTab, handleSettle }) {
             <Space>
                 <Button onClick={showModal}>
                     <PlusOutlined />
-                    New Item
+                    Add Item
                 </Button>
                 <Modal title="Create New Item" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
                     <Form
@@ -167,29 +167,29 @@ function TabCard({ tab, user, handleDeleteTab, handleSettle }) {
                         </Form.Item>
                     </Form>
                 </Modal>
+                <Button onClick={showConfirm}>
+                    {/* <DollarCircleOutlined /> */}
+                    Settle
+                </Button>
+                <Popover placement="bottomLeft" content={participants} trigger="click">
+                    <Button>
+                        {/* <UsergroupDeleteOutlined /> */}
+                        Participants
+                    </Button>
+                </Popover>
                 <Popconfirm
-                    title="Are you sure you want to delete this tab? All items will be deleted all together. Think twice!!"
+                    title="Once you delete, everythings is gone. No turning back. You sure?"
                     visible={visible}
                     onConfirm={handleOkToDelete}
                     onCancel={handleCancelDelete}
                     okText="Yes"
                     >
                     <Button onClick={showPopconfirm}>
-                        <DeleteOutlined  />
-                        Delete Tab
+                        {/* <DeleteOutlined  /> */}
+                        Delete
                     </Button>
                 </Popconfirm>
-                <Button onClick={showConfirm}>
-                    <DollarCircleOutlined />
-                    Settle
-                </Button>
-                <Popover placement="bottomLeft" content={participants} trigger="click">
-                    <Button>
-                        <UsergroupDeleteOutlined />
-                        Participants
-                    </Button>
-                </Popover>
-                You Currently owe:  ${ownAmount}
+                You owe:  ${ownAmount}
             </Space>
             <div id="itemcard">
                 {itemsToDisplay.length>0? 
@@ -198,7 +198,7 @@ function TabCard({ tab, user, handleDeleteTab, handleSettle }) {
                         return (<ItemCard key={item.id} item={item} handleDelete={handleDelete} />)
                     })}
                 </Space>:
-                <h2>No item at the moment, please add new items!</h2>}
+                <h2>Add an item to get started!</h2>}
             </div>
         </div>
     )

@@ -44,7 +44,7 @@ function NewTab({ curr_user }) {
         
     }
     const success = () => {
-        message.success('New Tab Created!');
+        message.success('Created successfully!');
       };
 
     function handleSubmit2(tab_id) {
@@ -81,24 +81,24 @@ function NewTab({ curr_user }) {
             onFinish={handleSubmit}
             >
                 <Form.Item
-                    label="Tab Name"
+                    label="Give it a name:"
                     name="name"
                     rules={[
                     {
                         required: true,
-                        message: 'Please input new tab name!',
+                        message: 'Please input a name!',
                     },
                     ]}
                 >
                     <Input onChange={handleInputChange} size="large" />
                 </Form.Item>
                 <Form.Item
-                    label="Participants"
+                    label="Who took part?:"
                     name="participants"
                     rules={[
                     {
                         required: true,
-                        message: 'Please select tab participants!',
+                        message: 'Please select participants!',
                     },
                     ]}
                 >
@@ -112,7 +112,8 @@ function NewTab({ curr_user }) {
                         }}
                     />
                 </Form.Item>
-                <Button htmlType="submit" size="large">
+                <br></br>
+                <Button htmlType="submit" size="large" style={{float: 'center'}}>
                     Submit
                 </Button>
             </Form>
